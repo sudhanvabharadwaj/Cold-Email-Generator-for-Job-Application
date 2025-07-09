@@ -1,10 +1,11 @@
+import os
 import requests
 from bs4 import BeautifulSoup
 from groq import Groq
 from dotenv import load_dotenv
 
 load_dotenv()
-client = Groq(api_key="GROQ_API_KEY")
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def fetch_job_posting_html(url):
     try:
