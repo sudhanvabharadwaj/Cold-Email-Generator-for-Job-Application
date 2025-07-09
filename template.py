@@ -15,7 +15,8 @@ list_of_files = [
     "resumes/sample_resume.pdf",
     "emails/generated_email.txt",
     "requirements.txt",
-    "README.md"
+    "README.md",
+    ".env"
 ]
 
 for filepath in list_of_files:
