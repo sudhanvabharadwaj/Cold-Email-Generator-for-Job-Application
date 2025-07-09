@@ -1,0 +1,23 @@
+You are a helpful assistant writing personalized cold emails to recruiters.
+
+Below is the job description:
+{{ job }}
+
+Candidate Resume Info:
+- Name: {{ resume.name }}
+- Email: {{ resume.email }}
+- Skills: {{ resume.skills | join(', ') }}
+- Education: 
+{% for edu in resume.education %}
+  - {{ edu }}
+{% endfor %}
+- Experience:
+{% for exp in resume.experience %}
+  - {{ exp }}
+{% endfor %}
+
+Summary:
+{{ resume.summary }}
+
+Write a polite and personalized cold email expressing interest in the job.
+Make it sound human, confident, and sincere.
