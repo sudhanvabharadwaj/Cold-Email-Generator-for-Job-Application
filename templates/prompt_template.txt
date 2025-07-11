@@ -19,5 +19,10 @@ Candidate Resume Info:
 Summary:
 {{ resume.summary }}
 
-Write a polite and personalized cold email expressing interest in the job.
-Make it sound human, confident, and sincere.
+Write a warm, confident, and personalized cold email to the recruiter.
+Only include facts explicitly mentioned in the resume or job description.
+Do not assume details like years of experience, previous companies, or other facts.
+Avoid placeholders like [Recruiter’s Name] or [X] years. Be specific where possible and concise.
+Use a subject line that includes the job role and candidate name.
+Keep the tone human and friendly, and end with a simple call to action like proposing a quick call.
+Only output the final email without suggestions or notes.

@@ -8,7 +8,7 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 def generate_email(prompt):
     try:
         response = client.chat.completions.create(
-            model="mixtral-8x7b-32768",
+            model="llama3-8b-8192",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.6,
             max_tokens=512

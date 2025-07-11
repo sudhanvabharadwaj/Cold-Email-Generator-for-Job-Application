@@ -3,22 +3,26 @@ import requests
 from bs4 import BeautifulSoup
 from groq import Groq
 from dotenv import load_dotenv
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import time
 
 load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def fetch_job_posting_html(url):
+    options = Options()
+    options.headless = True
+    driver = webdriver.Chrome(options=options)
+
     try:
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
-        }
-        res = requests.get(url, headers=headers)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        driver.get(url)
+        time.sleep(5)
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
         text_content = soup.get_text(separator="\n")
         return text_content
-    except requests.RequestException as e:
-        print(f"Error fetching job posting: {e}")
-        return None
+    finally:
+        driver.quit()
     
 def extract_job_details(url):
     raw_text = fetch_job_posting_html(url)
@@ -34,7 +38,7 @@ Here is the content:
 {raw_text}
 """
     response = client.chat.completions.create(
-        model="mixtral-8x7b-32768",
+        model="llama3-8b-8192",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.4,
         max_tokens=700

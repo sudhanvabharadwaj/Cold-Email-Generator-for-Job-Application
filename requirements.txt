@@ -1,10 +1,9 @@
 beautifulsoup4
 requests
-pyresparser
-pdfminer.six
 docx2txt
 nltk
 spacy
 jinja2
 groq
 python-dotenv
+pdfplumber
