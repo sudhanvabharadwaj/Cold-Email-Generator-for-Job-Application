@@ -27,12 +27,15 @@ Resume Text:
 {text}
 
 Return the extracted fields in JSON format with keys: name, email, phone, skills, education, experience.
+Only include facts explicitly mentioned in the resume.
+Do not assume details like name, years of experience, previous companies, or other facts.
 Do NOT include any explanation or markdown like ```json or ``` in your response.
+Only output the final JSON data without suggestions or notes.
 """
     response = client.chat.completions.create(
         model="llama3-8b-8192",
         messages=[{"role": "user", "content": prompt}],
-        temperature=0.4,
+        temperature=0.2,
         max_tokens=700
     )
     return response.choices[0].message.content.strip()

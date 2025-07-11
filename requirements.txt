@@ -7,3 +7,5 @@ jinja2
 groq
 python-dotenv
 pdfplumber
+streamlit
+selenium
